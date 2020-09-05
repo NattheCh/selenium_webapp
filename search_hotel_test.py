@@ -21,4 +21,18 @@ hotel_names = [hotel.get_attribute("textContent") for hotel in hotels]
 for name in hotel_names:
     print("Hotel name: " + name)
 
+prices = driver.find_elements_by_xpath("//div[contains(@class, 'price_tab')]//b")
+price_values = [price.get_attribute("textContent") for price in prices]
+for price in price_values:
+    print("The price is: " + price)
 
+correct_hotel_name =["Jumeirah Beach Hotel", "Oasis Beach Tower", "Rose Rayhaan Rotana", "Hyatt Regency Perth"]
+for hotel in range(4):
+    assert hotel_names[hotel] == correct_hotel_name[hotel]
+
+assert price_values[0] == "£14.30"
+assert price_values[1] == "£32.50"
+assert price_values[2] == "£52"
+assert price_values[3] == "£97.50"
+
+driver.quit()
