@@ -3,6 +3,7 @@ from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 from page_object_pattern.pages.search_hotel import SearchHotelPage
 from page_object_pattern.pages.search_results import SearchResultsPage
+import allure
 
 
 class TestHotelSearch:
@@ -12,9 +13,13 @@ class TestHotelSearch:
         self.driver = webdriver.Chrome(ChromeDriverManager().install())
         self.driver.implicitly_wait(10)
         self.driver.maximize_window()
+
         yield
         self.driver.quit()
 
+
+    @allure.title("Test case 1")
+    @allure.description("Searching hotels")
     def test_hotel_search(self, setup):
         self.driver.get("http://www.kurs-selenium.pl/demo/")
         search_hotel_page = SearchHotelPage(self.driver)
