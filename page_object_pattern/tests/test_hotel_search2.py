@@ -9,14 +9,14 @@ import allure
 @pytest.mark.usefixtures("setup")
 class TestHotelSearch:
 
-    @allure.title("Test case 1")
+    @allure.title("Test case 2")
     @allure.description("Searching hotels")
     def test_hotel_search(self, setup):
         self.driver.get("http://www.kurs-selenium.pl/demo/")
         search_hotel_page = SearchHotelPage(self.driver)
         search_hotel_page.set_city("dubai")
-        search_hotel_page.set_date_range("11/12/2020", "12/12/2020")
-        search_hotel_page.set_travelers("2", "2")
+        search_hotel_page.set_date_range("31/12/2020", "01/01/2021")
+        search_hotel_page.set_travelers("1", "1")
         search_hotel_page.perform_search()
         results_page = SearchResultsPage(self.driver)
         hotel_names = results_page.get_hotel_names()
