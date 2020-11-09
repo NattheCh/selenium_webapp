@@ -5,7 +5,6 @@ from page_object_pattern.pages.search_results import SearchResultsPage
 import allure
 
 
-
 @pytest.mark.usefixtures("setup")
 class TestHotelSearch:
 
@@ -26,7 +25,7 @@ class TestHotelSearch:
         for hotel in range(4):
             assert hotel_names[hotel] == correct_hotel_name[hotel]
 
-        assert price_values[0] == "$22"
+        assert price_values[0] == "$25"
         assert price_values[1] == "$50"
         assert price_values[2] == "$80"
         assert price_values[3] == "$150"
